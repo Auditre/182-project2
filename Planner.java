@@ -118,6 +118,7 @@ public class Planner {
 			System.out.println("1.Add Appointment   2.Delete Appointment   3.List Appointments   4.Exit");
 			int input = UserInput.getInt(1, 4);
 			
+			
 			if(input == 1){
 				Appointment a = new Appointment();
 				a.inputAppointment();
