@@ -189,6 +189,7 @@ public class Appointment {
 	//		TO STRING
 	public String toString() {
 		
+		
 		String dayF = String.format("%02d", this.day);
 		String hourF = String.format("%02d", this.hour);
 		String minuteF = String.format("%02d", this.minute);

@@ -43,10 +43,10 @@ public class UserInput {
     
     public static String getString(){
         System.out.println("Input a String: ");
-        String s = input.next();
+        String s = input.nextLine();
         while(checkString(s) == false){
             System.out.println("Invalid input.");
-            s = input.next();
+            s = input.nextLine();
         }
         return s;
         
