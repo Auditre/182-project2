@@ -45,7 +45,8 @@ public class UserInput {
         System.out.println("Input a String: ");
         String s = input.nextLine();
         while(checkString(s) == false){
-            System.out.println("Invalid input.");
+        	
+//            System.out.println("Invalid input.");
             s = input.nextLine();
         }
         return s;
@@ -122,13 +123,21 @@ public class UserInput {
     }
     
     public static boolean checkString(String input){
-        if(input.equalsIgnoreCase((String)input)){
+        if(input.equalsIgnoreCase((String)input) && input.isEmpty() == false){
             return true;
         }
         else return false;
     }
     
-    
+    /*
+     * public static String getString(){
+     * 	Scanner input = new Scanner(System.in);
+     *  String temp = input.next();
+     *  if((temp.isEmpty()) == false){
+     *  	return temp;
+     *  }
+     * */
+     
     
     
     

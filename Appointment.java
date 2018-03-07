@@ -173,9 +173,14 @@ public class Appointment {
 		
 		
 		System.out.print("Input message: ");
-		String mes = UserInput.getString();
+		String mes = UserInput.getString(0,40);
+		System.out.println(mes);
+		if(mes.isEmpty()) {
+			mes = UserInput.getString();
+			System.out.println("it worked!");
+		}
 		while(UserInput.checkString(mes) != true) {
-			System.out.println("Invalid input.");
+//			System.out.println("Invalid input.");
 			mes = UserInput.getString();
 		}
 		setMessage(mes);

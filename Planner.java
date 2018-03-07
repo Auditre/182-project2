@@ -43,21 +43,52 @@ public class Planner {
 	//if a1 < a2, return true, else false
 	public boolean compareAppointment(Appointment a1, Appointment a2) {
 		
+//		if(a1.monthToNum(a1) < a2.monthToNum(a2)) {
+//			return true;
+//		}
+//		else if((a1.getDay() < a2.getDay()) && (a1.monthToNum(a1) < a2.monthToNum(a2))) {
+//			return true;
+//		}else if((a1.getHour() < a2.getHour()) && (a1.getDay() < a2.getDay()) && (a1.monthToNum(a1) < a2.monthToNum(a2))) {
+//			return true;
+//		}else if((a1.getMinute() < a2.getMinute()) && (a1.getHour() < a2.getHour()) && (a1.getDay() < a2.getDay()) && (a1.monthToNum(a1) < a2.monthToNum(a2))) {
+//			return true;
+//		}
+//		else return false;
+		
+		
 		if(a1.monthToNum(a1) < a2.monthToNum(a2)) {
 			return true;
 		}
-		else if((a1.getDay() < a2.getDay()) && (a1.monthToNum(a1) < a2.monthToNum(a2))) {
+		else if((a1.getDay() < a2.getDay()) && (a1.monthToNum(a1) == a2.monthToNum(a2))) {
 			return true;
-		}else if((a1.getHour() < a2.getHour()) && (a1.getDay() < a2.getDay()) && (a1.monthToNum(a1) < a2.monthToNum(a2))) {
+		}else if((a1.getHour() < a2.getHour()) && (a1.getDay() == a2.getDay()) && (a1.monthToNum(a1) == a2.monthToNum(a2))) {
 			return true;
-		}else if((a1.getMinute() < a2.getMinute()) && (a1.getHour() < a2.getHour()) && (a1.getDay() < a2.getDay()) && (a1.monthToNum(a1) < a2.monthToNum(a2))) {
+		}else if((a1.getMinute() < a2.getMinute()) && (a1.getHour() == a2.getHour()) && (a1.getDay() == a2.getDay()) && (a1.monthToNum(a1) == a2.monthToNum(a2))) {
 			return true;
 		}
 		else return false;
 		
 	}
 			
-	
+	public void addAppointment() {
+		Appointment a1 = new Appointment();
+		a1.inputAppointment();
+		if(isFull(apparr))
+			System.out.println("Your planner is full!");
+		else
+			for(int i = apparr.length-1; i >= 0; i--) 				
+				if(apparr[i] != null)
+					if(compareAppointment(a1, apparr[i])) {
+						apparr[i+1] = apparr[i];
+						apparr[i] = a1;
+						
+					} 
+					else if(compareAppointment(apparr[i],a1) && apparr[i+1] == null){
+						apparr[i+1] = a1;
+						break;
+					}
+		
+	}
 	//insertAppointment (Appointment A1) places A1 in the proper (sorted) slot of the array
 	public void insertAppointment(Appointment a1) {
 				
@@ -105,11 +136,6 @@ public class Planner {
 		
 	}
 	
-	public Appointment[] getApparr(){
-		return apparr;
-	}
-	
-	
 	
 	public void run(){
 		int stopCheck = 0;
@@ -120,9 +146,7 @@ public class Planner {
 			
 			
 			if(input == 1){
-				Appointment a = new Appointment();
-				a.inputAppointment();
-				insertAppointment(a);
+				addAppointment();
 				
 			}else if(input == 2){
 				input = UserInput.getInt();
